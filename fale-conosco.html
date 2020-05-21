@@ -5,10 +5,16 @@
     <meta charset="UTF-8" />
     <title>Tudo sobre Google Glass</title>
     <link rel="stylesheet" type="text/css" href="_css/estilo.css" />
-
+    <link rel="stylesheet" type="text/css" href="_css/form.css" />
+    <script language="javascript" src="_javascript/funcoes.js"></script>
+    <script>
+        function calc_total() {
+            var qtd = parseInt(document.getElementById('cQtd').value);
+            tot = qtd * 1500;
+            document.getElementById('cTot').value = tot;
+        }
+    </script>
 </head>
-
-<script language="javascript" src="_javascript/funcoes.js"></script>
 
 <body>
     <div id="interface">
@@ -49,7 +55,7 @@
                     </hgroup>
                 </header>
 
-                <form method="POST" id="fContato" action="mailto:flavia_gudy@hotmail.com">
+                <form method="POST" id="fContato" action="mailto:flavia_gudy@hotmail.com" oninput="calc_total();">
 
                     <fieldset id="usuario">
                         <legend>Identificação do Usuário</legend>
@@ -70,25 +76,93 @@
                         <p><label for="cNum">Número:</label><input type="number" name="tNum" id="cNum" min="0" max="99999"/></p>
                         <p><label for="cEst">Estado:</label>
                             <select name="tEst" id="cEst"></p>
-                                <option></option>
-                        <p><label for="cCid">Cidade:</label><input type="text" name="tCid" id="cCid" size="20" maxlength="20"/></p>
+                                <option value="DF">Distrito Federal</option>
+                                <optgroup label="Norte">
+                                             <option value="AM">Amazonas</option>
+                                             <option value="RR">Roraima</option>
+                                             <option value="AP">Amapá</option>
+                                             <option value="PA">Pará</option>
+                                             <option value="TO">Tocantins</option>
+                                             <option value="RO">Rondônia</option>
+                                             <option value="AC">Acre</option>
+                                </optgroup>
+                                <optgroup label="Nordeste">
+                                             <option value="MA">Maranhão</option>
+                                             <option value="PI">Piauí</option>
+                                             <option value="CE">Ceará</option>
+                                             <option value="RN">Rio Grande do Norte</option>
+                                             <option value="PE">Pernambuco</option>
+                                             <option value="PB">Paraíba</option>
+                                             <option value="SE">Sergipe</option>
+                                             <option value="AL">Alagoas</option>
+                                             <option value="BA">Bahia</option>
+                                </optgroup>
+                                <optgroup label="Centro-Oeste">
+                                             <option value="GO">Goiás</option>
+                                             <option value="MS">Mato Grosso do Sul</option>
+                                             <option value="MT">Mato Grosso</option>
+                                </optgroup>
+                                <optgroup label="Sudeste">
+                                             <option value="SP" selected>São Paulo</option>
+                                             <option value="RJ">Rio de Janeiro</option>
+                                             <option value="MG">Minas Gerais</option>
+                                             <option value="ES">Espirito Santo</option>
+                                </optgroup>
+                                <optgroup label="Sul">
+                                             <option value="PR">Paraná</option>
+                                             <option value="RS">Rio Grande do Sul</option>
+                                             <option value="SC">Santa Catarina</option>
+                                </optgroup>
+                            </select>
+
+                        <p><label for="cCid">Cidade:</label><input type="text" name="tCid" id="cCid" size="20" maxlength="40" placeholder="Sua Cidade" list="cidades"/></p>
+                        <datalist id="cidades">
+                            <option value="Rio Branco"></option>
+                            <option value="Maceió"></option>
+                            <option value="Macapá"></option>
+                            <option value="Manaus"></option>
+                            <option value="Salvador"></option>
+                            <option value="Fortaleza"></option>
+                            <option value="Brasília"></option>
+                            <option value="Vitória"></option>
+                            <option value="Goiânia"></option>
+                            <option value="São Luís"></option>
+                            <option value="Cuiabá"></option>
+                            <option value="Campo Grande"></option>
+                            <option value="Belo Horizonte"></option>
+                            <option value="Belém"></option>
+                            <option value="João Pessoa"></option>
+                            <option value="Curitiba"></option>
+                            <option value="Recife"></option>
+                            <option value="Teresina"></option>
+                            <option value="Rio de Janeiro"></option>
+                            <option value="Natal"></option>
+                            <option value="Porto Alegre"></option>
+                            <option value="Porto Velho"></option>
+                            <option value="Boa Vista"></option>
+                            <option value="Florianópolis"></option>
+                            <option value="São Paulo"></option>
+                            <option value="Aracaju"></option>
+                            <option value="Palmas"></option>
+                        </datalist>
                     </fieldset>
 
                     <fieldset id="mensagem">
                     <legend>Mensagem do Usuário</legend>
-                        <p><label for="cUrg">Grau de Urgência:</label></p>
-                        <p><label for="cMsg">Mensagem:</label></p>
+                        <p><label for="cUrg">Grau de Urgência: Mín<input type="range" name="tUrg" id="cUrg" min="0" max="10" step="2"/>Máx</label></p>
+                        <p><label for="cMsg">Mensagem:</label><textarea name="tMsg" id="cMsg" cols="30" rows="5" placeholder="Deixe aqui sua mensagem"></textarea></p>
                     </fieldset>
 
                     <fieldset id="pedido">
                     <legend>Quero um Google Glass</legend>
-                        <p><label for="cPed">Gostaria de adquirir um Google Glass quando disponível</label></p>
-                        <p><label for="cCor">Cor:</label></p>
-                        <p><label for="cQtd">Quantidade:</label></p>
-                        <p><label for="cTot">Preço Total: R$</label></p>
+                        <p><input type="checkbox" name="tPed" id="cPed" checked/><label for="cPed">Gostaria de adquirir um Google Glass quando disponível</label></p>
+                        <p><label for="cCor">Cor:</label><input type="color" name="tCor" id="cCor"/></p>
+                        <p><label for="cQtd">Quantidade:</label><input type="number" name="tQtd" id="cQtd" min="0" max="5" value="0"/></p>
+                        <p><label for="cTot">Preço Total: R$</label><input type="text" name="tTot" id="cTot" placeholder="Total a pagar" readonly/></p>
                     </fieldset>
 
-                    [BOTÃO ENVIAR]
+                    <!--<input type="submit" value="Enviar"/> Tipo de fazer botão -->
+                    <input type="image" name="tEnviar" id="cEnviar" src="_imagens/botao-enviar.png"/>
 
                 </form>
 

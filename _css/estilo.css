@@ -109,7 +109,7 @@ nav#menu ul{
     text-transform: uppercase;
     position: absolute;
     top: -20px;
-    left: 465px;
+    left: 450px;
 }
 
 nav#menu li{
@@ -219,6 +219,13 @@ table#tabelaspec caption span {
     margin-top: 10px;
 }
 
+video#video01 {
+    display: block;
+    position: relative;
+    left: 22px;
+    top: -10px;
+}
+
 aside#lateral {
     display: block;
     width: 330px;
@@ -234,6 +241,12 @@ aside#lateral h1 {
     font-size: 20pt;
     color: #606060;
     margin-top: 5px;
+}
+
+video#video02 {
+    display: block;
+    position: relative;
+    width: 330px;
 }
 
 aside#lateral h2 {
